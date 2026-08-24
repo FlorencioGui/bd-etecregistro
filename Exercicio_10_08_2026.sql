@@ -84,3 +84,12 @@ GROUP BY categoria
 HAVING faturamento >= 1200
     AND COUNT(DISTINCT vendedor) >= 2
 ORDER BY ticket_medio DESC;
+
+SELECT 
+    t.area,
+    COUNT(a.id_aluno) AS total_alunos,
+    AVG(a.carga_horaria) AS media_carga_horaria
+FROM trilhas t
+INNER JOIN alunos a ON t.id_trilha = a.id_trilha
+GROUP BY t.area
+HAVING COUNT(a.id_aluno) >= 2;
